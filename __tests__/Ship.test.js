@@ -1,10 +1,11 @@
 const Ship = require("../src/Ship.js");
-const Port = require("../src/Port");
-const Itinerary = require("../src/Itinerary")
+
 
 describe("Ship", () => {
-  
-  let dover;
+
+    let dover;
+    let itinerary;
+    let ship;
 
   beforeEach(() => {
     dover = {
@@ -14,7 +15,10 @@ describe("Ship", () => {
     ships: []
   };
 
-    itinerary = new Itinerary([dover]);
+    itinerary =  {
+      ports: [dover]
+    };
+
     ship = new Ship(itinerary);
   });
 
@@ -36,6 +40,7 @@ describe("setSail", () => {
 
 let dover;
 let calais;
+let itinerary;
 
 beforeEach(() => {
   dover = {
@@ -52,7 +57,9 @@ beforeEach(() => {
     ships: []
   };
 
-  itinerary = new Itinerary([dover, calais]);
+  itinerary =  {
+      ports: [dover, calais]
+    };
   ship = new Ship(itinerary);
 });
 
@@ -84,6 +91,8 @@ describe("dock", () => {
 
   let dover;
   let calais;
+  let itinerary;
+  let ship;
 
   beforeEach(() => {
     dover = {
@@ -100,7 +109,10 @@ describe("dock", () => {
     ships: []
   };
 
-  itinerary = new Itinerary([dover, calais]);
+  itinerary =  {
+    ports: [dover, calais]
+  };
+
   ship = new Ship(itinerary);
 
     ship.setSail();

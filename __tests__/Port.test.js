@@ -2,6 +2,8 @@ const Port = require("../src/Port");
 
 describe("Port", () => {
 
+  let port;
+
   beforeEach(() => {
     port = new Port("Leith");
   });
@@ -20,6 +22,10 @@ describe("Port", () => {
 });
 
 describe("addShip", () => {
+
+  let port;
+  let titanic;
+  let queenMary;
 
   beforeEach(() => {
     port = new Port("Dover");
@@ -42,6 +48,10 @@ describe("addShip", () => {
 
 describe("removeShip", () => {
 
+  let port;
+  let titanic;
+  let queenMary;
+  
   beforeEach(() => {
     port = new Port("Dover");
     titanic = jest.fn();
