@@ -43,10 +43,10 @@ body {
   color: white;
   font-family: inherit;
   padding: 10px 20px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  position: fixed;
+  bottom: 25%;
+  width: 640px;
+  justify-self: center;
   font-family: 'Press Start 2P', cursive;
 }
 
