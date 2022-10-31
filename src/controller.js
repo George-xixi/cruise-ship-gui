@@ -1,3 +1,5 @@
+
+(function exportController() {
 function Controller() {
   this.initialiseSea();
 
@@ -14,4 +16,12 @@ let backgroundIndex = 0;
     document.querySelector('#viewport').style.backgroundImage = `url("${backgrounds[backgroundIndex % backgrounds.length]}")`
     backgroundIndex += 1;
   }, 1000);
-};
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Controller;
+} else {
+  window.Port = Controller;
+}
+
+}());
