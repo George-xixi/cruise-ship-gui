@@ -17,9 +17,9 @@
 
     <div id="headsup-display">
 
-      <p> </p>
+      <p id="hud-Current"> </p>
 
-      <p> </p>
+      <p id="hud-Next"> </p>
 
 
     </div>
@@ -51,6 +51,7 @@
     const controller = new Controller(ship);
     controller.renderPorts(itinerary.ports);
     controller.renderShip();
+    controller.renderHud();
   </script>
 </body>
 </html>

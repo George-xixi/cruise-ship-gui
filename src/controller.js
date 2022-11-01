@@ -5,6 +5,7 @@
       this.ship = ship;
 
       this.initialiseSea();
+      
 
       document.querySelector('#sailbutton').addEventListener('click', () => {
         this.setSail();
@@ -58,17 +59,33 @@
         viewport.removeChild(newMessageElement);
       },2000);
     };
+    renderHud() {
+      const ship = this.ship;
+      const itinerary = this.ship.itinerary
+      const currentPortDisplay = document.querySelector('#hud-Current');
+      const nextPortDisplay = document.querySelector('#hud-Next');
+      const currentPortName = ship.currentPort.name;
+      const currentPortIndex = itinerary.ports.indexOf(ship.currentPort);
+      const nextPortName = itinerary.ports[currentPortIndex + 1].name;
+
+      currentPortDisplay.innerHTML = `Current Port: ${currentPortName}`;
+      nextPortDisplay.innerHTML = `Next Port: ${nextPortName}`;
+      
+    };
     setSail() {
       const ship = this.ship
       const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
       const nextPortIndex = currentPortIndex + 1;
       const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
-      
+      const currentPortDisplay = document.querySelector('#hud-Current');
+      const nextPortDisplay = document.querySelector('#hud-Next');
+      const currentPortName = ship.currentPort.name;
+
       if (!nextPortElement) {
         this.renderMessage('End of the Line!');
       } else {
-      
-      this.renderMessage(`Now departing ${ship.currentPort.name}.`)
+
+      this.renderMessage(`Now departing ${currentPortName}.`);
       const shipElement = document.querySelector('#ship');
       const sailInterval = setInterval(() => {
       const shipLeft = parseInt(shipElement.style.left, 10);
@@ -81,8 +98,18 @@
       shipElement.style.left = `${shipLeft + 1}px`;
       }, 20);
 
+      currentPortDisplay.innerHTML = `Current Port: At sea`;
+      
       setTimeout(() => {
         this.renderMessage(`Now arriving at ${ship.itinerary.ports[nextPortIndex].name}.`)
+      },5000)
+    
+      setTimeout(() => {
+        currentPortDisplay.innerHTML = (`Current Port: ${ship.itinerary.ports[nextPortIndex].name}`)
+      },5000)
+
+      setTimeout(() => {
+        nextPortDisplay.innerHTML = (`Next Port: ${ship.itinerary.ports[nextPortIndex + 1].name}`)
       },5000)
     };
     };

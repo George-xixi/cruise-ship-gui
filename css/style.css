@@ -59,9 +59,17 @@ body {
 #message {
 position: absolute;
 width: 100%;
-background-color: rgb(255, 255, 255);
+background-color: white;
 font-family: 'Press Start 2P', cursive;
 bottom: 0;
 padding: 15px;
 text-align: center;
+}
+
+#headsup-display {
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 1%;
 }
