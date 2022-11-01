@@ -47,16 +47,28 @@
       shipElement.style.top = `${portElement.offsetTop + 20}px`;
       shipElement.style.left = `${portElement.offsetLeft - 32}px`;
     };
+    renderMessage(message) {
+      const newMessageElement = document.createElement('div');
+      const viewport = document.querySelector('#viewport');
+      newMessageElement.setAttribute('id', 'message');
+      newMessageElement.innerHTML = message;
+      viewport.appendChild(newMessageElement);
+      
+      setTimeout(() => { 
+        viewport.removeChild(newMessageElement);
+      },2000);
+    };
     setSail() {
       const ship = this.ship
       const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
       const nextPortIndex = currentPortIndex + 1;
       const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
-    
-      if (!nextPortElement) {
-        return alert('End of the line!');
-      }
       
+      if (!nextPortElement) {
+        this.renderMessage('End of the Line!');
+      } else {
+      
+      this.renderMessage(`Now departing ${ship.currentPort.name}.`)
       const shipElement = document.querySelector('#ship');
       const sailInterval = setInterval(() => {
       const shipLeft = parseInt(shipElement.style.left, 10);
@@ -68,7 +80,12 @@
 
       shipElement.style.left = `${shipLeft + 1}px`;
       }, 20);
-  }
+
+      setTimeout(() => {
+        this.renderMessage(`Now arriving at ${ship.itinerary.ports[nextPortIndex].name}.`)
+      },5000)
+    };
+    };
   };
 
 
