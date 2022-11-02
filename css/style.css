@@ -39,21 +39,27 @@ body {
 #sailbutton {
   border: 0;
   background-color: #FB3640;
-  border-bottom: 4px solid #d8040f;
+  border-block-start: 4px solid #d8040f;
+  border-inline-start: 4px solid #d8040f;
+  border-block-end: 4px solid #800108;
+  border-inline-end: 4px solid #800108;
   color: white;
   font-family: inherit;
   padding: 10px 20px;
   position: fixed;
-  bottom: 25%;
+  bottom: 24%;
   width: 640px;
   justify-self: center;
   font-family: 'Press Start 2P', cursive;
 }
 
 #sailbutton:focus {
-  background-color: #d8040f;
-  border-bottom-width: 0;
+  border-block-end: 4px solid #d8040f;
+  border-inline-end: 4px solid #d8040f;
+  border-block-start: 4px solid #800108;
+  border-inline-start: 4px solid #800108;
   padding-top: 14px;
+  
 }
 
 #message {
@@ -72,4 +78,38 @@ text-align: center;
   position: fixed;
   top: 0;
   right: 1%;
+}
+
+#form-div {
+  font-family: 'Press Start 2P', cursive;
+  color: black;
+  background-color: white;
+  border: 5px solid grey;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 1%;
+  margin-block-start: 1%;
+  padding: 0.5rem;
+}
+
+[type="submit"] {
+  background-color: #FB3640;
+  border-block-start: 4px solid #d8040f;
+  border-inline-start: 4px solid #d8040f;
+  border-block-end: 4px solid #800108;
+  border-inline-end: 4px solid #800108;
+  color: white;
+  font-family: inherit;
+  padding: 10px 10px;
+}
+
+[type="submit"]:focus {
+  border-block-end: 4px solid #d8040f;
+  border-inline-end: 4px solid #d8040f;
+  border-block-start: 4px solid #800108;
+  border-inline-start: 4px solid #800108;
+}
+
+[type="text"] {
+  height:35px;
 }

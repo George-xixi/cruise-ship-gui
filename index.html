@@ -15,6 +15,17 @@
 
   <main>
 
+    <div id="form-div">
+
+    <p> Add port</p>
+
+    <form id="form">      
+      <input id="portName" name="port" type="text" class="feedback-input" placeholder="Port name..." /> 
+      <input id="submit" type="submit" value="SUBMIT"/>
+    </form>
+
+  </div>
+
     <div id="headsup-display">
 
       <p id="hud-Current"> </p>
@@ -39,6 +50,7 @@
   <script src="/src/Ship.js"></script>
   <script src="/src/Port.js"></script>
   <script src="/src/Itinerary.js"></script>
+  <script src="/src/form.js"></script>
   <script>
     const itinerary = new Itinerary([
       new Port("Palma"), 
@@ -52,6 +64,22 @@
     controller.renderPorts(itinerary.ports);
     controller.renderShip();
     controller.renderHud();
+
+    const portName = document.querySelector("#portName");
+    const form = document.querySelector("#form");
+
+
+    form.addEventListener("submit", (event) => {
+    
+      const newPort = new Port(portName.value);
+      console.log(newPort);
+      itinerary.ports.push(newPort);
+      console.log(itinerary);
+      
+      controller.renderPorts(itinerary.ports);
+      
+      event.preventDefault();
+    } );
   </script>
 </body>
 </html>
