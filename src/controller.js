@@ -2,9 +2,11 @@
 (function exportController() {
   class Controller {
     constructor(ship) {
+    
       this.ship = ship;
 
       this.initialiseSea();
+      
       
 
       document.querySelector('#sailbutton').addEventListener('click', () => {
@@ -45,7 +47,7 @@
       const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
 
       const shipElement = document.querySelector('#ship');
-      shipElement.style.top = `${portElement.offsetTop + 20}px`;
+      shipElement.style.top = `${portElement.offsetTop - 90}px`;
       shipElement.style.left = `${portElement.offsetLeft - 32}px`;
     };
     renderMessage(message) {

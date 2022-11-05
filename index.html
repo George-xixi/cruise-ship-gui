@@ -16,32 +16,39 @@
   <main>
 
     <div id="form-div">
-
+    
     <p> Add port</p>
-
+    
     <form id="form">      
       <input id="portName" name="port" type="text" class="feedback-input" placeholder="Port name..." /> 
       <input id="submit" type="submit" value="SUBMIT"/>
     </form>
 
-  </div>
+    </div>
 
     <div id="headsup-display">
-
+    
       <p id="hud-Current"> </p>
-
+      
       <p id="hud-Next"> </p>
-
-
+    
     </div>
+
+    
 
     <div id="viewport">
 
+    <div id="intro-message"> 
+      <h1>Ahoy matey!</h1>
+      <p> To get started, add some ports to your itinerary!</p>
+
+      <button id="startbutton">Start voyage!</button>
+    </div>
       <div id="ports"></div>
 
       <div id="ship"></div>
 
-      <button id="sailbutton">Set Sail!</button>
+      <button id="sailbutton">Set Sail</button>
     </div>
 
   </main>
@@ -53,33 +60,46 @@
   <script src="/src/form.js"></script>
   <script>
     const itinerary = new Itinerary([
-      new Port("Palma"), 
-      new Port("Valencia"),
-      new Port("Barcelona"),
-      new Port("Marseille"),
-      new Port("Genoa")
-    ])
-    const ship = new Ship(itinerary);
-    const controller = new Controller(ship);
-    controller.renderPorts(itinerary.ports);
-    controller.renderShip();
-    controller.renderHud();
-
+      // new Port("Palma"), 
+      // new Port("Valencia"),
+      // new Port("Barcelona"),
+      // new Port("Marseille"),
+      // new Port("Genoa")
+    ]);
+    // const ship = new Ship(itinerary);
+    // const controller = new Controller(ship);
     const portName = document.querySelector("#portName");
     const form = document.querySelector("#form");
-
+    const startButton = document.querySelector("#startbutton");
 
     form.addEventListener("submit", (event) => {
-    
+      
       const newPort = new Port(portName.value);
       console.log(newPort);
       itinerary.ports.push(newPort);
       console.log(itinerary);
       
-      controller.renderPorts(itinerary.ports);
-      
       event.preventDefault();
     } );
+
+
+    startButton.addEventListener("click", (event) => {
+
+      if (itinerary.ports.length < 2) {
+        return alert("Your itinerary doesn't have enough ports, try adding some more!")
+      } else{
+      const ship = new Ship(itinerary);
+      const controller = new Controller(ship);
+      document.getElementById("ship").style.visibility = 'visible';
+      controller.renderPorts(itinerary.ports);
+      controller.renderShip();
+      controller.renderHud();
+      
+      document.getElementById("intro-message").innerHTML = " ";
+      document.getElementById("sailbutton").style.visibility = 'visible';
+    };
+    });
+
   </script>
 </body>
 </html>

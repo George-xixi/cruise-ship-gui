@@ -14,7 +14,7 @@ body {
   height: 256px;
   position:relative;
   overflow-x: auto;
-  background-image: url(/images/water0.png);
+  background-image: url('../images/water0.png');
 }
 
 #ports {
@@ -34,6 +34,7 @@ body {
   height: 64px;
   background-image: url('../images/ship.png');
   position: absolute;
+  visibility: hidden;
 }
 
 #sailbutton {
@@ -45,12 +46,14 @@ body {
   border-inline-end: 4px solid #800108;
   color: white;
   font-family: inherit;
-  padding: 10px 20px;
-  position: fixed;
-  bottom: 24%;
-  width: 640px;
-  justify-self: center;
+  position: absolute;
+  padding-block: 5px;
+  padding-inline: 5px;
+  inset-block-end: 0%;
+  inline-size: 50%;
+  inset-inline-start: 25%;
   font-family: 'Press Start 2P', cursive;
+  visibility: hidden;
 }
 
 #sailbutton:focus {
@@ -58,7 +61,7 @@ body {
   border-inline-end: 4px solid #d8040f;
   border-block-start: 4px solid #800108;
   border-inline-start: 4px solid #800108;
-  padding-top: 14px;
+  padding-block-start: 14px;
   
 }
 
@@ -112,4 +115,45 @@ text-align: center;
 
 [type="text"] {
   height:35px;
+}
+
+#itinerary {
+  font-family: 'Press Start 2P', cursive;
+  background-color: white;
+  position: fixed;
+  inset-inline-start: 1%;
+  border: 5px solid grey;
+  padding: 5px;
+}
+
+#startbutton {
+  border: 0;
+  background-color: #FB3640;
+  border-block-start: 4px solid #d8040f;
+  border-inline-start: 4px solid #d8040f;
+  border-block-end: 4px solid #800108;
+  border-inline-end: 4px solid #800108;
+  color: white;
+  font-family: inherit;
+  position: absolute;
+  padding-block: 5px;
+  padding-inline: 5px;
+  inline-size: 50%;
+  inset-inline-start: 25%;
+  font-family: 'Press Start 2P', cursive;
+  z-index: 100;
+}
+
+#startbutton:focus {
+  border-block-end: 4px solid #d8040f;
+  border-inline-end: 4px solid #d8040f;
+  border-block-start: 4px solid #800108;
+  border-inline-start: 4px solid #800108;
+  
+}
+
+#intro-message {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  text-align:center;
 }
