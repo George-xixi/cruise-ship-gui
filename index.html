@@ -34,7 +34,14 @@
     
     </div>
 
+    <div id="itinerary">
+
+      <p>Your Itinerary</p>
     
+      <ul id="list-of-ports">
+
+      </ul>
+    </div>
 
     <div id="viewport">
 
@@ -44,11 +51,13 @@
 
       <button id="startbutton">Start voyage!</button>
     </div>
+
       <div id="ports"></div>
 
       <div id="ship"></div>
 
       <button id="sailbutton">Set Sail</button>
+
     </div>
 
   </main>
@@ -66,18 +75,24 @@
       // new Port("Marseille"),
       // new Port("Genoa")
     ]);
-    // const ship = new Ship(itinerary);
-    // const controller = new Controller(ship);
+
     const portName = document.querySelector("#portName");
     const form = document.querySelector("#form");
     const startButton = document.querySelector("#startbutton");
+    const itineraryList = document.querySelector("#list-of-ports");
 
     form.addEventListener("submit", (event) => {
       
       const newPort = new Port(portName.value);
+      const newListItem = document.createElement("li");
       console.log(newPort);
       itinerary.ports.push(newPort);
       console.log(itinerary);
+      portName.value = "";
+
+      newListItem.innerHTML = newPort.name;
+      itineraryList.appendChild(newListItem);
+  
       
       event.preventDefault();
     } );
@@ -99,6 +114,8 @@
       document.getElementById("sailbutton").style.visibility = 'visible';
     };
     });
+
+
 
   </script>
 </body>

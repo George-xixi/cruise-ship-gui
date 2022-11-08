@@ -46,11 +46,11 @@ body {
   border-inline-end: 4px solid #800108;
   color: white;
   font-family: inherit;
-  position: absolute;
+  position: fixed;
   padding-block: 5px;
   padding-inline: 5px;
-  inset-block-end: 0%;
-  inline-size: 50%;
+  inset-block-end: 25%;
+  inline-size: 320px;
   inset-inline-start: 25%;
   font-family: 'Press Start 2P', cursive;
   visibility: hidden;
@@ -61,7 +61,6 @@ body {
   border-inline-end: 4px solid #d8040f;
   border-block-start: 4px solid #800108;
   border-inline-start: 4px solid #800108;
-  padding-block-start: 14px;
   
 }
 
