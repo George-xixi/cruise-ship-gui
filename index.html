@@ -21,7 +21,7 @@
     
     <form id="form">      
       <input id="portName" name="port" type="text" class="feedback-input" placeholder="Port name..." /> 
-      <input id="submit" type="submit" value="SUBMIT"/>
+      <input class="button" id="submit" type="submit" value="SUBMIT"/>
     </form>
 
     </div>
@@ -42,24 +42,26 @@
 
       </ul>
     </div>
+    <div id="viewport-container">
+      <div id="viewport">
 
-    <div id="viewport">
+      <div id="intro-message"> 
+        <h1>Ahoy matey!</h1>
+        <p> To get started, add some ports to your itinerary!</p>
 
-    <div id="intro-message"> 
-      <h1>Ahoy matey!</h1>
-      <p> To get started, add some ports to your itinerary!</p>
-
-      <button id="startbutton">Start voyage!</button>
-    </div>
+        <button class="button" id="start-button">Start voyage!</button>
+      </div>
 
       <div id="ports"></div>
 
       <div id="ship"></div>
 
-      <button id="sailbutton">Set Sail</button>
+      <button class="button" id="restart-button" >Restart</button>
 
     </div>
-
+    <button class="button" id="sail-button">Set Sail</button>
+    
+  </div>
   </main>
 
   <script src="/src/Controller.js"></script>
@@ -76,27 +78,10 @@
       // new Port("Genoa")
     ]);
 
-    const portName = document.querySelector("#portName");
+    const startButton = document.querySelector("#start-button");
     const form = document.querySelector("#form");
-    const startButton = document.querySelector("#startbutton");
-    const itineraryList = document.querySelector("#list-of-ports");
-
-    form.addEventListener("submit", (event) => {
-      
-      const newPort = new Port(portName.value);
-      const newListItem = document.createElement("li");
-      console.log(newPort);
-      itinerary.ports.push(newPort);
-      console.log(itinerary);
-      portName.value = "";
-
-      newListItem.innerHTML = newPort.name;
-      itineraryList.appendChild(newListItem);
-  
-      
-      event.preventDefault();
-    } );
-
+    const shipImg = document.getElementById("ship");
+    const restartButton = document.getElementById("restart-button");
 
     startButton.addEventListener("click", (event) => {
 
@@ -105,17 +90,21 @@
       } else{
       const ship = new Ship(itinerary);
       const controller = new Controller(ship);
-      document.getElementById("ship").style.visibility = 'visible';
+      shipImg.style.visibility = 'visible';
+      shipImg.style.height = '64px';
       controller.renderPorts(itinerary.ports);
       controller.renderShip();
       controller.renderHud();
       
+      document.getElementById("form-div").style.visibility = 'hidden';
       document.getElementById("intro-message").innerHTML = " ";
-      document.getElementById("sailbutton").style.visibility = 'visible';
+      document.getElementById("sail-button").style.visibility = 'visible';
     };
     });
 
-
+    restartButton.addEventListener("click", (event) => {
+      window.location.reload();
+    });
 
   </script>
 </body>

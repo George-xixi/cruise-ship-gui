@@ -64,7 +64,7 @@ describe("removeShip", () => {
   it("can remove a ship", () => {
 
     port.removeShip(titanic);
-
+    
     expect(port.ships).not.toContain(titanic);
 
     port.removeShip(queenMary);

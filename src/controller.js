@@ -9,7 +9,7 @@
       
       
 
-      document.querySelector('#sailbutton').addEventListener('click', () => {
+      document.querySelector('#sail-button').addEventListener('click', () => {
         this.setSail();
       });
     }
@@ -47,12 +47,12 @@
       const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
 
       const shipElement = document.querySelector('#ship');
-      shipElement.style.top = `${portElement.offsetTop - 90}px`;
+      shipElement.style.top = `${portElement.offsetTop - 125}px`;
       shipElement.style.left = `${portElement.offsetLeft - 32}px`;
     };
     renderMessage(message) {
       const newMessageElement = document.createElement('div');
-      const viewport = document.querySelector('#viewport');
+      const viewport = document.querySelector('#viewport-container');
       newMessageElement.setAttribute('id', 'message');
       newMessageElement.innerHTML = message;
       viewport.appendChild(newMessageElement);

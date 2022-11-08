@@ -7,6 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Press Start 2P', cursive; ;
 }
 
 #viewport {
@@ -15,6 +16,7 @@ body {
   position:relative;
   overflow-x: auto;
   background-image: url('../images/water0.png');
+  border: 5px solid grey;
 }
 
 #ports {
@@ -31,51 +33,47 @@ body {
 
 #ship {
   width: 128px;
-  height: 64px;
+  height: 0px;
   background-image: url('../images/ship.png');
   position: absolute;
   visibility: hidden;
 }
 
-#sailbutton {
-  border: 0;
+.button {
   background-color: #FB3640;
   border-block-start: 4px solid #d8040f;
   border-inline-start: 4px solid #d8040f;
   border-block-end: 4px solid #800108;
   border-inline-end: 4px solid #800108;
   color: white;
-  font-family: inherit;
-  position: fixed;
-  padding-block: 5px;
-  padding-inline: 5px;
-  inset-block-end: 25%;
-  inline-size: 320px;
-  inset-inline-start: 25%;
-  font-family: 'Press Start 2P', cursive;
-  visibility: hidden;
 }
 
-#sailbutton:focus {
+.button:focus {
   border-block-end: 4px solid #d8040f;
   border-inline-end: 4px solid #d8040f;
   border-block-start: 4px solid #800108;
   border-inline-start: 4px solid #800108;
-  
+}
+
+#sail-button {
+  position: relative;
+  padding-block: 5px;
+  padding-inline: 5px;
+  inline-size: 320px;
+  inset-inline-start: 25%;
+  visibility: hidden;
 }
 
 #message {
-position: absolute;
-width: 100%;
+position:absolute;
+inset-block-start: 460px;
+width: 650px;
 background-color: white;
-font-family: 'Press Start 2P', cursive;
-bottom: 0;
-padding: 15px;
+padding-block: 15px;
 text-align: center;
 }
 
 #headsup-display {
-  font-family: 'Press Start 2P', cursive;
   color: white;
   position: fixed;
   top: 0;
@@ -83,33 +81,26 @@ text-align: center;
 }
 
 #form-div {
-  font-family: 'Press Start 2P', cursive;
   color: black;
   background-color: white;
   border: 5px solid grey;
-  position: fixed;
-  inset-block-start: 0;
-  inset-inline-start: 1%;
-  margin-block-start: 1%;
-  padding: 0.5rem;
+  position: absolute;
+  inset-block-start: 1%;
+  inline-size: 640px;
+  display: grid;
+
+}
+
+#form-div > p {
+  font-size: 35px;
+}
+#form-div > * {
+justify-self: center;
+margin: 10px;
 }
 
 [type="submit"] {
-  background-color: #FB3640;
-  border-block-start: 4px solid #d8040f;
-  border-inline-start: 4px solid #d8040f;
-  border-block-end: 4px solid #800108;
-  border-inline-end: 4px solid #800108;
-  color: white;
-  font-family: inherit;
   padding: 10px 10px;
-}
-
-[type="submit"]:focus {
-  border-block-end: 4px solid #d8040f;
-  border-inline-end: 4px solid #d8040f;
-  border-block-start: 4px solid #800108;
-  border-inline-start: 4px solid #800108;
 }
 
 [type="text"] {
@@ -117,42 +108,35 @@ text-align: center;
 }
 
 #itinerary {
-  font-family: 'Press Start 2P', cursive;
   background-color: white;
   position: fixed;
   inset-inline-start: 1%;
+  inset-block-start: 1%;
   border: 5px solid grey;
   padding: 5px;
 }
 
-#startbutton {
-  border: 0;
-  background-color: #FB3640;
-  border-block-start: 4px solid #d8040f;
-  border-inline-start: 4px solid #d8040f;
-  border-block-end: 4px solid #800108;
-  border-inline-end: 4px solid #800108;
-  color: white;
-  font-family: inherit;
+#start-button {
   position: absolute;
   padding-block: 5px;
   padding-inline: 5px;
   inline-size: 50%;
   inset-inline-start: 25%;
-  font-family: 'Press Start 2P', cursive;
   z-index: 100;
-}
-
-#startbutton:focus {
-  border-block-end: 4px solid #d8040f;
-  border-inline-end: 4px solid #d8040f;
-  border-block-start: 4px solid #800108;
-  border-inline-start: 4px solid #800108;
-  
 }
 
 #intro-message {
   color: white;
   font-family: 'Press Start 2P', cursive;
   text-align:center;
+  margin-block-start: 50px;
+}
+
+#restart-button {
+  padding-inline: 20px;
+  padding-block: 5px;
+  inset-block: 0;
+  position: absolute;
+  height: max-content;
+  font-size: smaller;
 }
