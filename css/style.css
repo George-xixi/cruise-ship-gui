@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -7,40 +8,40 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Press Start 2P', cursive; ;
+  font-family: "Press Start 2P", cursive;
 }
 
 #viewport {
-  width: 640px;
-  height: 256px;
-  position:relative;
+  inline-size: 640px;
+  block-size: 256px;
+  position: relative;
   overflow-x: auto;
-  background-image: url('../images/water0.png');
+  background-image: url("../images/water0.png");
   border: 5px solid grey;
 }
 
 #ports {
-  margin-top: 96px;
+  margin-block-start: 96px;
   display: flex;
   justify-content: space-around;
 }
 
 #ports > .port {
-  width: 64px;
-  height: 32px;
-  background-image: url('../images/port.png');
+  inline-size: 64px;
+  block-size: 32px;
+  background-image: url("../images/port.png");
 }
 
 #ship {
-  width: 128px;
-  height: 0px;
-  background-image: url('../images/ship.png');
+  inline-size: 128px;
+  block-size: 0px;
+  background-image: url("../images/ship.png");
   position: absolute;
   visibility: hidden;
 }
 
 .button {
-  background-color: #FB3640;
+  background-color: #fb3640;
   border-block-start: 4px solid #d8040f;
   border-inline-start: 4px solid #d8040f;
   border-block-end: 4px solid #800108;
@@ -57,27 +58,26 @@ body {
 
 #sail-button {
   position: relative;
-  padding-block: 5px;
-  padding-inline: 5px;
+  padding: 5px;
   inline-size: 320px;
   inset-inline-start: 25%;
   visibility: hidden;
 }
 
 #message {
-position:absolute;
-inset-block-start: 460px;
-width: 650px;
-background-color: white;
-padding-block: 15px;
-text-align: center;
+  position: absolute;
+  inset-block-start: 460px;
+  inline-size: 650px;
+  background-color: white;
+  padding-block: 15px;
+  text-align: center;
 }
 
 #headsup-display {
   color: white;
   position: fixed;
-  top: 0;
-  right: 1%;
+  inset-inline-end: 1%;
+  inset-block-start: 0;
 }
 
 #form-div {
@@ -88,15 +88,14 @@ text-align: center;
   inset-block-start: 1%;
   inline-size: 640px;
   display: grid;
-
 }
 
 #form-div > p {
-  font-size: 35px;
+  font-size: 27px;
 }
 #form-div > * {
-justify-self: center;
-margin: 10px;
+  justify-self: center;
+  margin: 10px;
 }
 
 [type="submit"] {
@@ -104,7 +103,7 @@ margin: 10px;
 }
 
 [type="text"] {
-  height:35px;
+  block-size: 40px;
 }
 
 #itinerary {
@@ -114,6 +113,11 @@ margin: 10px;
   inset-block-start: 1%;
   border: 5px solid grey;
   padding: 5px;
+}
+
+#itinerary > p {
+  font-size: 27px;
+  margin-block-start: 5px;
 }
 
 #start-button {
@@ -127,16 +131,15 @@ margin: 10px;
 
 #intro-message {
   color: white;
-  font-family: 'Press Start 2P', cursive;
-  text-align:center;
-  margin-block-start: 50px;
+  text-align: center;
+  margin-block-start: 60px;
 }
 
 #restart-button {
   padding-inline: 20px;
   padding-block: 5px;
-  inset-block: 0;
+  inset-block-start: 0;
   position: absolute;
-  height: max-content;
+  block-size: max-content;
   font-size: smaller;
 }

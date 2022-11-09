@@ -1,111 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <title>Cruise Ships</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cruise Ships</title>
+  </head>
 
-  <main>
+  <body>
+    <main>
+      <div id="form-div">
+        <p>Add port</p>
 
-    <div id="form-div">
-    
-    <p> Add port</p>
-    
-    <form id="form">      
-      <input id="portName" name="port" type="text" class="feedback-input" placeholder="Port name..." /> 
-      <input class="button" id="submit" type="submit" value="SUBMIT"/>
-    </form>
-
-    </div>
-
-    <div id="headsup-display">
-    
-      <p id="hud-Current"> </p>
-      
-      <p id="hud-Next"> </p>
-    
-    </div>
-
-    <div id="itinerary">
-
-      <p>Your Itinerary</p>
-    
-      <ul id="list-of-ports">
-
-      </ul>
-    </div>
-    <div id="viewport-container">
-      <div id="viewport">
-
-      <div id="intro-message"> 
-        <h1>Ahoy matey!</h1>
-        <p> To get started, add some ports to your itinerary!</p>
-
-        <button class="button" id="start-button">Start voyage!</button>
+        <form id="form">
+          <input
+            id="portName"
+            name="port"
+            type="text"
+            class="feedback-input"
+            placeholder="Port name..."
+          />
+          <input class="button" id="submit" type="submit" value="SUBMIT" />
+        </form>
       </div>
 
-      <div id="ports"></div>
+      <div id="headsup-display">
+        <p id="hud-Current"></p>
+        <p id="hud-Next"></p>
+      </div>
 
-      <div id="ship"></div>
+      <div id="itinerary">
+        <p>Itinerary:</p>
+        <ul id="list-of-ports"></ul>
+      </div>
 
-      <button class="button" id="restart-button" >Restart</button>
+      <div id="viewport-container">
 
-    </div>
-    <button class="button" id="sail-button">Set Sail</button>
-    
-  </div>
-  </main>
+        <div id="viewport">
 
-  <script src="/src/Controller.js"></script>
-  <script src="/src/Ship.js"></script>
-  <script src="/src/Port.js"></script>
-  <script src="/src/Itinerary.js"></script>
-  <script src="/src/form.js"></script>
-  <script>
-    const itinerary = new Itinerary([
-      // new Port("Palma"), 
-      // new Port("Valencia"),
-      // new Port("Barcelona"),
-      // new Port("Marseille"),
-      // new Port("Genoa")
-    ]);
+          <div id="intro-message">
+            <h1>Ahoy matey!</h1>
+            <p>To get started, add some ports to your itinerary!</p>
+            <button class="button" id="start-button">Start voyage!</button>
+          </div>
 
-    const startButton = document.querySelector("#start-button");
-    const form = document.querySelector("#form");
-    const shipImg = document.getElementById("ship");
-    const restartButton = document.getElementById("restart-button");
+          <div id="ports"></div>
+          <div id="ship"></div>
+          <button class="button" id="restart-button">Restart</button>
 
-    startButton.addEventListener("click", (event) => {
+        </div>
 
-      if (itinerary.ports.length < 2) {
-        return alert("Your itinerary doesn't have enough ports, try adding some more!")
-      } else{
-      const ship = new Ship(itinerary);
-      const controller = new Controller(ship);
-      shipImg.style.visibility = 'visible';
-      shipImg.style.height = '64px';
-      controller.renderPorts(itinerary.ports);
-      controller.renderShip();
-      controller.renderHud();
+        <button class="button" id="sail-button">Set Sail</button>
+
+      </div>
+    </main>
+
+    <script src="/src/Controller.js"></script>
+    <script src="/src/Ship.js"></script>
+    <script src="/src/Port.js"></script>
+    <script src="/src/Itinerary.js"></script>
+    <script src="/src/form.js"></script>
+    <script>
+      const itinerary = new Itinerary([]);
+      const startButton = document.querySelector("#start-button");
       
-      document.getElementById("form-div").style.visibility = 'hidden';
-      document.getElementById("intro-message").innerHTML = " ";
-      document.getElementById("sail-button").style.visibility = 'visible';
-    };
-    });
+      const shipImg = document.getElementById("ship");
+      const restartButton = document.getElementById("restart-button");
 
-    restartButton.addEventListener("click", (event) => {
-      window.location.reload();
-    });
+      startButton.addEventListener("click", (event) => {
+        if (itinerary.ports.length < 2) {
+          return alert(
+            "Your itinerary doesn't have enough ports, try adding some more!"
+          );
+        } else {
+          const ship = new Ship(itinerary);
+          const controller = new Controller(ship);
 
-  </script>
-</body>
+          shipImg.style.visibility = "visible";
+          shipImg.style.height = "64px";
+          controller.renderPorts(itinerary.ports);
+          controller.renderShip();
+          controller.renderHud();
+
+          document.getElementById("form-div").style.visibility = "hidden";
+          document.getElementById("intro-message").innerHTML = " ";
+          document.getElementById("sail-button").style.visibility = "visible";
+        }
+      });
+
+      restartButton.addEventListener("click", (event) => {
+        window.location.reload();
+      });
+    </script>
+  </body>
 </html>
