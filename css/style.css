@@ -136,10 +136,10 @@ body {
 }
 
 #restart-button {
-  padding-inline: 20px;
-  padding-block: 5px;
-  inset-block-start: 0;
-  position: absolute;
+  position: relative;
+  padding: 5px;
+  inset-block-end: 264px;
+  inset-inline-start: 5px;
   block-size: max-content;
   font-size: smaller;
 }
