@@ -59,8 +59,7 @@ body {
 #sail-button {
   position: relative;
   padding: 5px;
-  inline-size: 320px;
-  inset-inline-start: 25%;
+  inline-size: 100%;
   visibility: hidden;
 }
 
